@@ -1,0 +1,19 @@
+{
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node dist/backend/app.js",
+    "build:backend": "tsc -p tsconfig.backend.json",
+    "build:frontend": "tsc -p tsconfig.frontend.json",
+    "build": "npm run build:backend && npm run build:frontend",
+    "dev:backend": "tsc -p tsconfig.backend.json --watch & nodemon dist/backend/app.js",
+    "dev:frontend": "tsc -p tsconfig.frontend.json --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "typescript": "^5.9.2"
+  }
+
+}

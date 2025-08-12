@@ -1,10 +1,37 @@
+using System.Text.Json;
+using bolig_swipe_backend;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy  =>
+        {
+            policy.WithOrigins("http://localhost:5173");
+        });
+});
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors(MyAllowSpecificOrigins);
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -12,30 +39,16 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+var tempJSON = File.ReadAllText("results.json");
+var apartmentResponse = JsonSerializer.Deserialize<ApartmentResponse>(tempJSON);
+var apartments = apartmentResponse?.results;
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/apartments/random", () =>
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
+        var randomApartment = apartments?[Random.Shared.Next(apartments.Count)];
+        return randomApartment;
     })
-    .WithName("GetWeatherForecast");
+    .WithName("GetRandomApartment");
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

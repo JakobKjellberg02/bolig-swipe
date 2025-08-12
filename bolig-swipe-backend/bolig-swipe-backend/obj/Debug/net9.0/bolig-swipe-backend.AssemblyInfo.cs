@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bolig-swipe-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23a5146cab75b8364e8aa57b7692f2001079086f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b277a71543c48791de331251a90be2da09dc2393")]
 [assembly: System.Reflection.AssemblyProductAttribute("bolig-swipe-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bolig-swipe-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

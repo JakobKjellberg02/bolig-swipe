@@ -1,0 +1,6 @@
+@bolig_swipe_backend_HostAddress = http://localhost:5212
+
+GET {{bolig_swipe_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

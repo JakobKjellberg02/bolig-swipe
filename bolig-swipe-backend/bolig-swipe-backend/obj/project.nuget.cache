@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q7CVq/19CEQ=",
+  "success": true,
+  "projectFilePath": "/home/jkjellberg02/dev/bolig-swipe/bolig-swipe-backend/bolig-swipe-backend/bolig-swipe-backend.csproj",
+  "expectedPackageFiles": [
+    "/home/jkjellberg02/.nuget/packages/microsoft.aspnetcore.openapi/9.0.8/microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "/home/jkjellberg02/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

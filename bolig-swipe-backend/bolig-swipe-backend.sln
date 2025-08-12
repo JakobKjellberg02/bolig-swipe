@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bolig-swipe-backend", "bolig-swipe-backend\bolig-swipe-backend.csproj", "{19658CB9-870E-49E6-8378-044BA40A8D23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19658CB9-870E-49E6-8378-044BA40A8D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19658CB9-870E-49E6-8378-044BA40A8D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19658CB9-870E-49E6-8378-044BA40A8D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19658CB9-870E-49E6-8378-044BA40A8D23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

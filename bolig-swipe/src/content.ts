@@ -25,15 +25,19 @@ let startX = 0;
 let currentCard: HTMLDivElement | null = null;
 
 async function loadCard(): Promise<void> {
-    if (!container) return;
-    if (currentCard) container.removeChild(currentCard);
-
     try {
         const res = await fetch(`http://192.168.68.80:5212/apartments/random`);
         const data: Apartment = await res.json();
 
+        if (!container) return;
+        if (currentCard) container.removeChild(currentCard);
+
         const card = document.createElement('div');
         card.className = 'Bolig';
+
+        const img = document.createElement('img');
+        img.src = 'no_bolig.jpg';
+        img.alt = data.street;
 
         const info = document.createElement('div');
         info.className = 'info';
@@ -42,23 +46,23 @@ async function loadCard(): Promise<void> {
             <p>${data.price.toLocaleString()} kr.</p>
             <p>${data.rooms} vær., ${data.size} m²</p>
         `;
-
-        const img = document.createElement('img');
-        img.alt = data.street;
-        img.src = data.images?.[0]?.url || 'no_bolig.jpg';
-
         card.append(img, info);
         container.appendChild(card);
         currentCard = card;
 
         setSwipeEvents(card);
 
+        if (data.images?.[0]?.url) {
+            const realImg = new Image();
+            realImg.src = data.images[0].url;
+            realImg.onload = () => img.src = realImg.src;
+            realImg.onerror = () => img.src = 'no_bolig.jpg';
+        }
+
     } catch (err) {
         console.error('Error loading content:', err);
     }
 }
-
-
 
 function setSwipeEvents(card: HTMLDivElement) {
     let offsetX = 0;
